@@ -7,35 +7,37 @@ function timeBlocks(hour, todo = ""){
     if (currentHour === hour + 9)ppf = 'present';
     var hourTitle = hours[hour];
     var todo = localStorage.getItem(hourTitle);
+
+    console.log(hourTitle, todo)
     $('.container').append( $(`
     <div class="row time-block">
         <div class="hour col-1">${hourTitle}</div>
         <textarea name="" id="${hourTitle}" cols="30" rows="4" class="description col-9 ${ppf}">${todo || ""}</textarea>
         <button class="btn saveBtn col-1">💾</button>
     </div>
-        `))
+        `));
 }
 for(var i = 0; i < 9; i++){
-    timeBlocks(i)
+    timeBlocks(i);
 }
 
 
 
-var btn = document.querySelectorAll(".saveBtn")
+var btn = document.querySelectorAll(".saveBtn");
 
 
 for(var i = 0; i < btn.length; i++){
-btn[i].addEventListener("click", clickSave)
+btn[i].addEventListener("click", clickSave);
 }
 
 function clickSave(event){
 
-var todoValue = event.target.parentNode.children[1].value
-var key = event.target.parentNode.children[1].id
+var todoValue = event.target.parentNode.children[1].value;
+var key = event.target.parentNode.children[1].id;
 
-console.log("Value Key", todoValue, key)
+console.log("Key Value", key, todoValue);
 
-localStorage.setItem(todoValue, key)
+localStorage.setItem(key, todoValue);
 
 
 }
